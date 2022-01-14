@@ -38,10 +38,16 @@ function Nav() {
                 About Us
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a className="dropdown-item" href="#">
+                <a
+                  className="dropdown-item"
+                  href="https://www.linkedin.com/in/daniel-yang-38b966217/"
+                >
                   LinkedIn
                 </a>
-                <a className="dropdown-item" href="#">
+                <a
+                  className="dropdown-item"
+                  href="https://github.com/dyang1999"
+                >
                   GitHub
                 </a>
                 <div className="dropdown-divider"></div>
@@ -53,7 +59,7 @@ function Nav() {
 
             <li className="nav-item active">
               <a className="nav-link" href="#">
-                About Us <span className="sr-only">(current)</span>
+                Awards <span className="sr-only">(current)</span>
               </a>
             </li>
             <li className="nav-item">
