@@ -1,0 +1,29 @@
+.root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15vh;
+}
+.seat {
+  background-color: #444451;
+  height: 22px;
+  width: 25px;
+  margin: 10px;
+  margin-right: 50px;
+  margin-left: 30px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.table {
+    background-color: #a8a8ae;
+    height: 50px;
+    width: 50px;
+    margin: 23px;
+
+
+}
+.row{
+    display: flex;
+}
+
