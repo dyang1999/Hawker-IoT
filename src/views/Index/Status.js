@@ -3,14 +3,18 @@ import "./Status.css";
 
 const Status = () => {
 
-  const [occupied, setOccupied] = useState(true);
+  const [occupied, setOccupied] = useState(false);
+
+  const occupancyHandler = () =>{
+    setOccupied((prev) => !prev);
+  }
 
 
   return (
     <div className="root">
       <div>
         <div className="row">
-          <div className={`seat ${occupied ? "occupied" : ""}`} />
+          <div onClick = {()=>occupancyHandler()} className={`seat ${occupied ? "occupied" : ""}`} />
           <div className="seat" />
         </div>
         <div className="row">
