@@ -9,6 +9,19 @@ const Status = () => {
     setOccupied((prev) => !prev);
   }
 
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetch("http://127.0.0.1:5000/", {
+      method: "GET",
+    })
+      .then((resp) => resp.json())
+      .then((processedphoto) => {
+        setData(processedphoto);
+        console.log(processedphoto)
+      })
+      .catch((error) => console.log(error));
+  });
+
 
   return (
     <div className="root">
