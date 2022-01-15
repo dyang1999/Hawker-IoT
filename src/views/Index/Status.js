@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Status.css";
 
 const Status = () => {
@@ -8,28 +8,39 @@ const Status = () => {
   //   setOccupied((prev) => !prev);
   // };
 
-  const [data, setData] = useState([]);
-  useEffect(() => {
+  const [data, setData] = useState(1);
+  // useEffect(() => {
+  //   fetch("http://127.0.0.1:5000/", {
+  //     method: "GET",
+  //   })
+  //     .then((resp) => resp.json())
+  //     .then((processedphoto) => {
+  //       setData(processedphoto);
+  //       console.log(processedphoto)
+  //     })
+  //     .catch((error) => console.log(error));
+  // },[]);
+  useEffect(()=>{
     fetch("http://127.0.0.1:5000/", {
-      method: "GET",
-    })
-      .then((resp) => resp.json())
-      .then((processedphoto) => {
-        setData(processedphoto);
-        console.log(processedphoto);
-      })
-      .catch((error) => console.log(error));
-  });
+          method: "GET",
+        })
+    .then((response) => {
+      response.json();
+      console.log(response)
+    }).catch((error) => console.log(error));
+    },[])
+  
 
-  useEffect(() => {
-    setOccupied((prev) => !prev);
-  }, [data]);
+
+  // useEffect(() => {
+  //   setOccupied((prev) => !prev);
+  // }, [data]);
 
   return (
     <div className="root">
       <div>
         <div className="row">
-          <div className={`seat ${occupied ? "occupied" : ""}`} />
+          <div className={`seat ${data == 1 ? "occupied" : ""}`} />
           <div className="seat" />
         </div>
         <div className="row">

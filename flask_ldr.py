@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import pyfirmata
 import time
 
@@ -40,6 +40,7 @@ def run_arduino():
         raise Exception('failed to set up arduino')
     vals = read_input(reading)
     led.write(occupancy(vals))
+    print(vals)
     return vals, board
 
 def occupancy(vals):
@@ -54,13 +55,14 @@ def home():
     if request.method == 'POST':
         pass
     else:
-        # return render_template(
-        #     'home.html', 
-        #     led_status=occupancy(vals)
-        # )
-        return occupancy(vals)
+        
+        vals, board = run_arduino()
+        board.exit() 
+        return render_template(
+            'home.html', 
+            led_status=occupancy(vals),
+        )
+        # return (occupancy(vals))
 
 if __name__ == '__main__':  
-    vals, board = run_arduino()
-    board.exit()   
     app.run(debug=True)

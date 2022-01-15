@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000" />
+		
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style>
+        main
+        {
+            overflow-x: auto;
+            text-align: center;
+        }
+        .form-control
+        {
+            display: inline-block;
+            width: 50%;
+        }
+        .table-control
+        {
+            width: 70%;
+            margin-left:15%; 
+            margin-right:15%;
+        }
+        .redbackground
+        {
+            background-color: #ea433b;
+        }
+        .yellowbackground
+        {
+            background-color: #f5b82e;
+        }
+        .greenbackground
+        {
+            background-color: #2e944b;
+            color: white;
+        }
+        .red
+        {
+            color: #ea433b;
+        }
+        .yellow
+        {
+            color: #f5b82e;
+        }
+        .green
+        {
+            color: #2e944b;
+        }
+        .resizewheelchair
+        {
+            max-width:20%;
+            max-height:20%;
+        }
+        .resizedd
+        {
+            max-width:30%;
+            max-height:30%;
+            vertical-align:bottom;
+        }
+        .resizesd
+        {
+            max-width:40%;
+            max-height:40%;
+            vertical-align:bottom;
+        }
+        .resizebd
+        {
+            max-width:60%;
+            max-height:60%;
+            vertical-align:bottom;
+        }
+    </style>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light border">
+        <a class="navbar-brand" href="/"><span class="red">Hawk eyes</span></a>
+        <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav mr-auto mt-2">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/">Home again</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <br>
+			{% block main %}{% endblock %}
+    </main>
+</body>
+</html>
