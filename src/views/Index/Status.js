@@ -1,22 +1,25 @@
-import Nav from "../../components/Nav/Nav";
-import React from "react";
-import classes from "./Status.module.css";
+import React,{ useState }  from "react";
+import "./Status.css";
 
 const Status = () => {
+
+  const [occupied, setOccupied] = useState(true);
+
+
   return (
-    <div className={classes.root}>
+    <div className="root">
       <div>
-        <div className={classes.row}>
-          <div className={classes.seat} />
-          <div className={classes.seat} />
+        <div className="row">
+          <div className={`seat ${occupied ? "occupied" : ""}`} />
+          <div className="seat" />
         </div>
-        <div className={classes.row}>
-          <div className={classes.table} />
-          <div className={classes.table} />
+        <div className="row">
+          <div className="table" />
+          <div className="table" />
         </div>
-        <div className={classes.row}>
-          <div className={classes.seat} />
-          <div className={classes.seat} />
+        <div className="row">
+          <div className="seat" />
+          <div className="seat" />
         </div>
       </div>
     </div>
