@@ -1,13 +1,12 @@
-import React,{ useState }  from "react";
+import React, { useState } from "react";
 import "./Status.css";
 
 const Status = () => {
-
   const [occupied, setOccupied] = useState(false);
 
-  const occupancyHandler = () =>{
-    setOccupied((prev) => !prev);
-  }
+  // const occupancyHandler = () => {
+  //   setOccupied((prev) => !prev);
+  // };
 
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -17,17 +16,20 @@ const Status = () => {
       .then((resp) => resp.json())
       .then((processedphoto) => {
         setData(processedphoto);
-        console.log(processedphoto)
+        console.log(processedphoto);
       })
       .catch((error) => console.log(error));
   });
 
+  useEffect(() => {
+    setOccupied((prev) => !prev);
+  }, [data]);
 
   return (
     <div className="root">
       <div>
         <div className="row">
-          <div onClick = {()=>occupancyHandler()} className={`seat ${occupied ? "occupied" : ""}`} />
+          <div className={`seat ${occupied ? "occupied" : ""}`} />
           <div className="seat" />
         </div>
         <div className="row">
