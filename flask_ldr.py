@@ -39,7 +39,7 @@ def read_input(reading):
 def run_arduino():
     try:
         reading, led, board = set_up(
-            '/dev/tty.usbserial-14210', 'a:0:i', 'd:8:o')
+            'COM8', 'a:0:i', 'd:8:o')
     except:
         raise Exception('failed to set up arduino')
     vals = read_input(reading)
@@ -49,7 +49,7 @@ def run_arduino():
 
 
 def occupancy(vals):
-    if vals[-1] < 0.25 and vals[-2] < 0.25:
+    if vals[-1] < 0.3 and vals[-2] < 0.3:
         return 1
     else:
         return 0
@@ -61,9 +61,9 @@ def home():
         pass
     else:
 
-        # vals, board = run_arduino()
-        # board.exit()
-        vals = [0, 0, 0, 0, 0]
+        vals, board = run_arduino()
+        board.exit()
+        # vals = [0, 0, 0, 0, 0]
         return render_template(
             'home.html',
             led_status=occupancy(vals),
