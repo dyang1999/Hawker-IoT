@@ -23,7 +23,11 @@
             <!-- 7 -->
             <li class="grid-item-1">
               <div class="set">
+              {%if led_status == 0%}
               <div class="chair1"></div>
+              {%elif led_status == 1%}
+              <div class="chair5"></div>
+              {% endif %}
               <div class="chair2"></div>
               <div class="table"></div>
               <div class="chair3"></div>

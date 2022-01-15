@@ -10,6 +10,7 @@ app.config["DEBUG"] = True
 led_status = 0
 vals = []
 
+
 def set_up(port, analog_input, output):
     board = pyfirmata.Arduino(port)
 
@@ -20,12 +21,13 @@ def set_up(port, analog_input, output):
 
     return reading, led, board
 
+
 def read_input(reading):
     global vals
     vals = []
     # while True:
-        # print(reading.read())
-        # time.sleep(1)
+    # print(reading.read())
+    # time.sleep(1)
     for i in range(6):
         val = reading.read()
         if not isinstance(val, type(None)):
@@ -33,9 +35,11 @@ def read_input(reading):
         time.sleep(0.5)
     return vals
 
+
 def run_arduino():
     try:
-        reading, led, board = set_up('COM8', 'a:0:i', 'd:8:o')
+        reading, led, board = set_up(
+            '/dev/tty.usbserial-14210', 'a:0:i', 'd:8:o')
     except:
         raise Exception('failed to set up arduino')
     vals = read_input(reading)
@@ -43,26 +47,29 @@ def run_arduino():
     print(vals)
     return vals, board
 
+
 def occupancy(vals):
     if vals[-1] < 0.25 and vals[-2] < 0.25:
         return 1
     else:
         return 0
-       
+
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
         pass
     else:
-        
-        vals, board = run_arduino()
-        board.exit() 
+
+        # vals, board = run_arduino()
+        # board.exit()
+        vals = [0, 0, 0, 0, 0]
         return render_template(
-            'home.html', 
+            'home.html',
             led_status=occupancy(vals),
         )
         # return (occupancy(vals))
 
-if __name__ == '__main__':  
+
+if __name__ == '__main__':
     app.run(debug=True)
